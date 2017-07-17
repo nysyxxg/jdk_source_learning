@@ -1,6 +1,6 @@
-#TreeMap
+# TreeMap
 
-#####前言：
+##### 前言：
 TreeMap和HashMap一样实现的是Map接口，但两者的实现方式天差地别。HashMap的底层是hash表+单向链表的形式存储数据，TreeMap底层是通过红黑树存储数据。HashMap因为是基于散列表的实现，所以时间开销为O(1)，TreeMap的时间开销是O(lgn)。TreeMap的优势在于他是基于key值排序的。  
 
 红黑树有五大特性：  
@@ -19,7 +19,7 @@ TreeMap和HashMap一样实现的是Map接口，但两者的实现方式天差地
 在TreeMap中插入元素，原理就是在二叉查找树中插入元素。通过对二叉树节点大小的对比插入相应的位置，时间复杂度为O(lgn)。但是在插入完毕以后，有可能会导致红黑树被破坏的情况，因此需要修复当前结构，重新着色。  
 
 put方法：  
-```
+```java
 public V put(K key, V value) {
     Entry<K,V> t = root;
     if (t == null) {
@@ -76,7 +76,7 @@ public V put(K key, V value) {
 ```
 
 插入元素后调整红黑树结构：  
-```
+```java
 private void fixAfterInsertion(Entry<K,V> x) {
     x.color = RED;
 
